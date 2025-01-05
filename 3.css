@@ -1,0 +1,14 @@
+.container{
+    width:450px;
+    height:250px;
+    display:flex;
+    justify-content:center;
+
+}
+
+h1{
+   width:80px;
+   height:40px;
+    background-color:#fc427b;
+    text-align:center;
+}

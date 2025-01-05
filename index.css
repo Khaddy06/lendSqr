@@ -1,0 +1,83 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background-image:url('./img/frame 14195 (1).png');
+    background-repeat:no-repeat;
+    background-size:cover;
+    height:100vh;
+    max-weight:100%;
+    align-items:center;  
+}
+
+
+header{
+    display:flex;
+    align-items:center; 
+    max-weight:100%;  
+}
+h2.logo{
+   padding:20px;  
+}
+
+ul{
+  white-space:nowrap;  
+}
+
+ul li{
+    display:inline-block;
+ padding:0 9px;
+ margin:0 50px;
+}
+.home{
+    color:blue;
+}
+
+a{
+    text-decoration:none;
+    color:black;
+}
+
+main{
+    margin:140px 20px;
+    position:relative;
+    top:100px;  
+}
+.main{
+    line-height:1.3em;
+    font-size:26px;
+     width:390px;
+}
+   
+
+form select{
+    padding:10px 0px;
+    text-align:left;
+    width:290px;
+    border:none;
+    outline:none;
+    margin-top:20px;
+}
+button{
+   padding:10px 23px; 
+   text-align:center;
+   color:white;
+   background-color:blue;
+   border:none;
+   outline:none;
+}
+
+
+
+
+
+  
+
+   
+   
+   
+
+    

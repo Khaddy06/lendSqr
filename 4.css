@@ -1,0 +1,41 @@
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+
+p{
+    width:250px;
+    height:200px;
+    background-color:lightpink;
+    color:brown;
+    font-size:17px;
+    text-align:center;
+    padding:10px;
+   
+    
+
+}
+.first{
+    background-color:#dddddd;
+    display:flex;
+    flex-direction:columns;
+    justify-content:space-between; 
+      
+}
+.one{
+   width:400px;
+   color:white; 
+    margin:10px;
+}
+.three{
+   
+    padding:20px 95px ;
+}
+.form{
+   
+    align-items:center;
+  padding:20px;
+}

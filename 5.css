@@ -1,0 +1,167 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+header{
+    background-color:pink;
+    text-align:center;
+    position:fixed;
+    width:100%;
+    top:0;
+    padding:15px;
+    z-index:1;
+  
+   
+}
+header h1{
+    border:6px solid white;
+    display:inline-block;
+    padding:10px 25px;
+    border-radius:36px;
+   
+     
+
+}
+
+.first img{
+    max-width:100%;
+    width:100%;
+    position:relative;
+}
+.topic{
+    position:absolute;
+    top:30%;
+    left:0;
+    font-size:55px;
+    padding:25px;
+    background-color:lightpink;
+    color:white;
+    opacity:0.7;
+   
+   
+}
+span{
+    font-size:1.3em;
+}
+
+nav{
+    background-color:lightpink;
+    padding:20px;
+    position:sticky;
+    top:50px;
+    
+}
+nav ul{
+    max-width:1200px;
+    white-space:nowrap;
+    
+}
+nav li{
+    width:25%;
+    display:inline-block;
+   
+}
+nav li a{
+    color:white;
+    text-decoration:none;
+    font-size:30px;
+    margin:10px 25px;
+}
+
+h2{
+   font-size:40px;
+}
+.lot {
+    font-size:20px; 
+    font-weight:400px; 
+}
+
+main{
+    padding:0 30px;
+    margin:12px 20px;
+
+}
+
+main h2{
+    text-align:center;
+    font-size:50px;
+}
+main p{
+   font-size:25px; 
+   line-height:1.4em;
+}
+.images{
+    text-align:center;
+   
+   
+}
+.image li{
+    display:inline-block;
+    
+ 
+   
+}
+.image li img{
+    max-width:100%;
+}
+.third{
+    text-align:center;
+}
+
+
+
+footer{
+    text-align:center;
+    background-color:pink;
+    padding:12px;
+    font-size:23px;
+    font-weight:bold;
+}
+@media screen and (max-width:500px) {
+.topic{
+    font-size:25px;
+    position:static;
+    padding:15px;
+}
+span{
+    font-size:1.3em;
+}
+nav{
+    background-color:lightpink;
+    padding:20px;
+    position:sticky;
+    top:0;
+    
+}
+nav li a{
+    color:white;
+    text-decoration:none;
+    font-size:20px;
+    margin:8px 25px;
+}
+
+header{
+    font-size:20px;
+    position:static;
+   
+}
+h2{
+   font-size:20px;
+}
+
+.lot{
+   font-size:15px; 
+}
+
+main p{
+   font-size:20px; 
+   line-height:1.4em;
+}
+main h2{
+    text-align:center;
+    font-size:30px;
+}
+
+
+}
