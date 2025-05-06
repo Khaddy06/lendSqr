@@ -60,8 +60,9 @@ const UserDetailsTable = () => {
 
           <div className="text-center sm:text-left">
             <p className="text-[#545F7D] text-base font-normal mb-1">
-              User's Tier
+              User&apos;s Tier
             </p>
+
             <div className="flex gap-1 justify-center sm:justify-start">
               <Image src={starOne} alt="Star" width={18} height={18} />
               <Image src={star} alt="Star" width={18} height={18} />
@@ -133,7 +134,7 @@ const UserDetailsTable = () => {
                 <tr className="">
                   <td className="p-4">Single</td>
                   <td className="p-4">None</td>
-                  <td className="p-4">Parent's Apartment</td>
+                  <td className="p-4">Parent&apos;s Apartment</td>
                 </tr>
               </tbody>
             </table>
