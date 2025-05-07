@@ -24,9 +24,10 @@ const UserDetailsTable = () => {
           <p className="text-base font-medium text-[#545F7D]">Back to Users</p>
         </Link>
       </div>
-      <div className="flex items-center justify-between mb-6 flex-wrap">
-        <h1 className="text-2xl font-medium text-[#213F7D] ">Users Details</h1>
-        <div className="flex gap-3 flex-wrap mt-4 sm:mt-0">
+      <div className="flex flex-wrap items-center justify-between mb-6">
+        <h1 className="text-2xl font-medium text-[#213F7D]">Users Details</h1>
+
+        <div className="w-full mt-4 sm:mt-0 sm:w-auto sm:ml-auto flex gap-3 justify-end flex-wrap">
           <button className="text-[#E4033B] text-base font-semibold uppercase px-6 py-3 border border-b-2 border-[#E4033B] rounded-md">
             blacklist user
           </button>

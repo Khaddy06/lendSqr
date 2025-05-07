@@ -14,6 +14,7 @@ import Active from "../../assets/active.png";
 import Blacklist from "../../assets/Vector (1).png";
 import View from "../../assets/view.png";
 import UserFilterForm from "@/app/components/filter";
+import { time } from "console";
 
 const cards = [
   { image: Icon, label: "Users", count: "2,453" },
@@ -28,7 +29,8 @@ const users = [
     name: "Adedeji Odumade",
     email: "adedeji@email.com",
     phone: "08012345678",
-    dateJoined: "May 01, 2023 10:00AM",
+    dateJoined: "May 01, 2023",
+    timeJoined: " 10:00AM",
     status: "Active",
   },
   {
@@ -36,7 +38,8 @@ const users = [
     name: "Jane Doe",
     email: "jane@email.com",
     phone: "08098765432",
-    dateJoined: "Jun 10, 2023 10:00AM",
+    dateJoined: "Jun 10, 2023",
+    timeJoined: "10:00AM",
     status: "Inactive",
   },
   {
@@ -44,7 +47,8 @@ const users = [
     name: "Samuel Obi",
     email: "samuel@email.com",
     phone: "08123456789",
-    dateJoined: "Mar 05, 2023 10:00AM",
+    dateJoined: "Mar 05, 2023",
+    timeJoined: "10:00AM",
     status: "Pending",
   },
   {
@@ -52,7 +56,8 @@ const users = [
     name: "Linda Johnson",
     email: "linda@email.com",
     phone: "09011223344",
-    dateJoined: "Jan 21, 2023 10:00AM",
+    dateJoined: "Jan 21, 2023",
+    timeJoined: " 10:00AM",
     status: "Blacklisted",
   },
   {
@@ -60,7 +65,8 @@ const users = [
     name: "John Smith",
     email: "johnsmith@email.com",
     phone: "08187654321",
-    dateJoined: "Jul 15, 2023 9:30AM",
+    dateJoined: "Jul 15, 2023 ",
+    timeJoined: "9: 30AM",
     status: "Active",
   },
   {
@@ -68,7 +74,8 @@ const users = [
     name: "Chidinma Eze",
     email: "chidinma@email.com",
     phone: "07033445566",
-    dateJoined: "Feb 08, 2023 11:00AM",
+    dateJoined: "Feb 08, 2023",
+    timeJoined: "11:00AM",
     status: "Inactive",
   },
   {
@@ -76,7 +83,8 @@ const users = [
     name: "Michael Ajayi",
     email: "michael@email.com",
     phone: "08122334455",
-    dateJoined: "Apr 12, 2023 2:15PM",
+    dateJoined: "Apr 12, 2023",
+    timeJoined: "2:15PM",
     status: "Pending",
   },
   {
@@ -84,7 +92,8 @@ const users = [
     name: "Grace Umeh",
     email: "grace@email.com",
     phone: "08099887766",
-    dateJoined: "Dec 19, 2022 4:45PM",
+    dateJoined: "Dec 19, 2022",
+    timeJoined: "4:45PM",
     status: "Blacklisted",
   },
 ];
@@ -139,6 +148,7 @@ const UsersPage = () => {
                   "Email",
                   "Phone Number",
                   "Date Joined",
+                  "Time Joined",
                   "Status",
                 ].map((heading, i) => (
                   <th key={i} className="p-3 md:p-4">
@@ -163,11 +173,10 @@ const UsersPage = () => {
                   key={idx}
                   className="border-b border-[#213F7D1A] hover:bg-gray-50"
                 >
-                  <Link href="/dashboard/users-details">
-                    <td className="p-2 text-[#545F7D] text-sm md:text-base font-normal">
-                      {user.organization}
-                    </td>
-                  </Link>
+                  <td className="p-2 text-[#545F7D] text-sm md:text-base font-normal">
+                    {user.organization}
+                  </td>
+
                   <td className="p-2 text-[#545F7D] text-sm md:text-base font-normal">
                     {user.name}
                   </td>
@@ -179,6 +188,9 @@ const UsersPage = () => {
                   </td>
                   <td className="p-2 text-[#545F7D] text-sm md:text-base font-normal">
                     {user.dateJoined}
+                  </td>
+                  <td className="p-2 text-[#545F7D] text-sm md:text-base font-normal">
+                    {user.timeJoined}
                   </td>
                   <td className="p-2 relative">
                     <div className="flex items-center justify-between gap-2">
@@ -206,15 +218,17 @@ const UsersPage = () => {
                         {openMenuIndex === idx && (
                           <div className="absolute right-0 w-40 bg-white shadow-xl rounded z-10">
                             <ul className="text-sm text-[#545F7D] p-3">
-                              <li className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
-                                <Image
-                                  src={View}
-                                  alt="View"
-                                  width={12}
-                                  height={12}
-                                />
-                                View Details
-                              </li>
+                              <Link href="/dashboard/users-details">
+                                <li className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                  <Image
+                                    src={View}
+                                    alt="View"
+                                    width={12}
+                                    height={12}
+                                  />
+                                  View Details
+                                </li>
+                              </Link>
                               <li className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
                                 <Image
                                   src={Blacklist}
