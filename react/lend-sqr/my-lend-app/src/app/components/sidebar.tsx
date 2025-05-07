@@ -56,23 +56,20 @@ const settings = [
   { icon: Slider, label: "Preferences", href: "#" },
   { icon: Fee, label: "Fees and Pricing", href: "#" },
   { icon: Audit, label: "Audit Log", href: "#" },
-  { icon: Audit, label: "Log Out", href: "#" },
 ];
 
 const Sidebar = ({ onClose }: SidebarProps) => {
   return (
     <aside className="fixed top-16 left-0 h-[calc(100vh-4rem)] w-full md:w-64 bg-white shadow-sm overflow-y-auto px-5 py-6 z-30">
-    
       {onClose && (
         <button
           onClick={onClose}
-          className="md:hidden mb-4 text-gray-700 font-bold"
+          className="md:hidden mb-4 text-gray-700 font-bold ml-auto block"
         >
           ✕ Close
         </button>
       )}
 
-      
       <div className="flex items-center gap-2 text-gray-600 mb-6 cursor-point text-base hover:text-[#213F7D]">
         <Image src={Briefcase} alt="briefcase" width={20} height={20} />
         <span className="font-medium text-base text-[#213F7D]">
@@ -81,7 +78,6 @@ const Sidebar = ({ onClose }: SidebarProps) => {
         <Image src={Down} alt="dropdown" width={20} height={20} />
       </div>
 
-    
       <nav className="space-y-8">
         <div>
           <Link
@@ -125,7 +121,7 @@ const Sidebar = ({ onClose }: SidebarProps) => {
               <li key={index}>
                 <Link
                   href={item.href}
-                  className="flex items-center gap-3 text-base text-[#213F7D] opacity-60 hover:text-[#39CDCC] transition"
+                  className="flex items-center gap-3 text-base text-[#213F7D]  opacity-60 hover:text-[#39CDCC] transition"
                 >
                   <Image
                     src={item.icon}
@@ -161,6 +157,15 @@ const Sidebar = ({ onClose }: SidebarProps) => {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link
+                href="/auth/login"
+                className="flex items-center gap-3 text-base text-[#213F7D] opacity-60 hover:text-[#39CDCC] transition"
+              >
+                <Image src={Audit} alt="Logout" width={20} height={20} />
+                Logout
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>
