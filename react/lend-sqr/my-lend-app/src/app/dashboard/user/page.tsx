@@ -14,7 +14,6 @@ import Active from "../../assets/active.png";
 import Blacklist from "../../assets/Vector (1).png";
 import View from "../../assets/view.png";
 import UserFilterForm from "@/app/components/filter";
-import { time } from "console";
 
 const cards = [
   { image: Icon, label: "Users", count: "2,453" },
