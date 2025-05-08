@@ -28,8 +28,7 @@ const users = [
     name: "Adedeji Odumade",
     email: "adedeji@email.com",
     phone: "08012345678",
-    dateJoined: "May 01, 2023",
-    timeJoined: " 10:00AM",
+    dateJoined: "May 01, 2023 10:00AM",
     status: "Active",
   },
   {
@@ -37,8 +36,7 @@ const users = [
     name: "Jane Doe",
     email: "jane@email.com",
     phone: "08098765432",
-    dateJoined: "Jun 10, 2023",
-    timeJoined: "10:00AM",
+    dateJoined: "Jun 10, 2023 10:00AM",
     status: "Inactive",
   },
   {
@@ -46,8 +44,7 @@ const users = [
     name: "Samuel Obi",
     email: "samuel@email.com",
     phone: "08123456789",
-    dateJoined: "Mar 05, 2023",
-    timeJoined: "10:00AM",
+    dateJoined: "Mar 05, 2023 10:00AM",
     status: "Pending",
   },
   {
@@ -55,8 +52,7 @@ const users = [
     name: "Linda Johnson",
     email: "linda@email.com",
     phone: "09011223344",
-    dateJoined: "Jan 21, 2023",
-    timeJoined: " 10:00AM",
+    dateJoined: "Jan 21, 2023 10:00AM",
     status: "Blacklisted",
   },
   {
@@ -64,8 +60,7 @@ const users = [
     name: "John Smith",
     email: "johnsmith@email.com",
     phone: "08187654321",
-    dateJoined: "Jul 15, 2023 ",
-    timeJoined: "9: 30AM",
+    dateJoined: "Jul 15, 2023 9: 30AM",
     status: "Active",
   },
   {
@@ -73,8 +68,7 @@ const users = [
     name: "Chidinma Eze",
     email: "chidinma@email.com",
     phone: "07033445566",
-    dateJoined: "Feb 08, 2023",
-    timeJoined: "11:00AM",
+    dateJoined: "Feb 08, 2023 11:00AM",
     status: "Inactive",
   },
   {
@@ -82,8 +76,7 @@ const users = [
     name: "Michael Ajayi",
     email: "michael@email.com",
     phone: "08122334455",
-    dateJoined: "Apr 12, 2023",
-    timeJoined: "2:15PM",
+    dateJoined: "Apr 12, 2023 2:15PM",
     status: "Pending",
   },
   {
@@ -91,8 +84,7 @@ const users = [
     name: "Grace Umeh",
     email: "grace@email.com",
     phone: "08099887766",
-    dateJoined: "Dec 19, 2022",
-    timeJoined: "4:45PM",
+    dateJoined: "Dec 19, 2022 4:45PM",
     status: "Blacklisted",
   },
 ];
@@ -147,7 +139,6 @@ const UsersPage = () => {
                   "Email",
                   "Phone Number",
                   "Date Joined",
-                  "Time Joined",
                   "Status",
                 ].map((heading, i) => (
                   <th key={i} className="p-3 md:p-4">
@@ -185,12 +176,10 @@ const UsersPage = () => {
                   <td className="p-2 text-[#545F7D] text-sm md:text-base font-normal">
                     {user.phone}
                   </td>
-                  <td className="p-2 text-[#545F7D] text-sm md:text-base font-normal">
+                  <td className="p-4 text-[#545F7D] text-sm md:text-base font-normal">
                     {user.dateJoined}
                   </td>
-                  <td className="p-2 text-[#545F7D] text-sm md:text-base font-normal">
-                    {user.timeJoined}
-                  </td>
+
                   <td className="p-2 relative">
                     <div className="flex items-center justify-between gap-2">
                       <span
@@ -280,18 +269,37 @@ const UsersPage = () => {
           >
             <FaChevronLeft color="#213F7D" />
           </button>
-          {[1, 2, 3].map((num) => (
-            <button
-              key={num}
-              className="text-sm md:text-base text-[#545F7D] px-2"
-            >
-              {num}
-            </button>
-          ))}
+
+          <Link
+            href="/dashboard/user"
+            className="text-sm md:text-base text-[#545F7D] px-2 py-1 rounded hover:bg-gray-200"
+          >
+            1
+          </Link>
+
+          <Link
+            href="/dashboard/user-one"
+            className="text-sm md:text-base text-[#545F7D] px-2 py-1 rounded hover:bg-gray-200"
+          >
+            2
+          </Link>
+
+          <Link
+            href="/dashboard/user-two"
+            className="text-sm md:text-base text-[#545F7D] px-2 py-1 rounded hover:bg-gray-200"
+          >
+            3
+          </Link>
+
           <span className="px-2 text-sm md:text-base text-[#545F7D]">...</span>
-          <button className="text-sm md:text-base text-[#545F7D] px-2">
+
+          <Link
+            href="/dashboard/user-three"
+            className="text-sm md:text-base text-[#545F7D] px-2 py-1 rounded hover:bg-gray-200"
+          >
             12
-          </button>
+          </Link>
+
           <button
             className="px-2 py-1 rounded bg-[#213F7D1A] hover:bg-gray-200"
             title="icon"
