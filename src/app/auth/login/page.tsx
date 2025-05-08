@@ -15,16 +15,15 @@ export default function LoginPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Simulate login validation (replace with real logic)
     if (email && password) {
-      router.push("/dashboard/user"); // ✅ Redirect to dashboard
+      router.push("/dashboard/user");
     } else {
       alert("Please enter email and password");
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row">
+    <div className="min-h-screen flex flex-col md:flex-row overflow-hidden">
       {/* Left section with logo and illustration */}
       <div className="w-full md:w-1/2 p-6 sm:p-8 flex flex-col bg-gray-50 pt-5">
         <div className="flex px-4 sm:px-8 md:px-12 mb-10 sm:mb-20">
@@ -40,13 +39,13 @@ export default function LoginPage() {
           <Image
             src={illustration}
             alt="Login Illustration"
-            width={600}
-            height={400}
-            className="max-w-full h-auto"
+            className="w-full h-auto max-w-xs sm:max-w-md md:max-w-full object-contain"
+            priority
           />
         </div>
       </div>
 
+      {/* Right section with login form */}
       <div className="w-full md:w-1/2 p-6 sm:p-8 flex items-center justify-center bg-white">
         <div className="w-full max-w-md">
           <h1 className="text-3xl sm:text-4xl font-bold text-[#213f7d] mb-2">
