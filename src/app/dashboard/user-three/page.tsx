@@ -14,6 +14,7 @@ import Active from "../../assets/active.png";
 import Blacklist from "../../assets/Vector (1).png";
 import View from "../../assets/view.png";
 import UserFilterForm from "@/app/components/filter";
+import { useGetUserData } from "@/app/library/querry";
 
 const cards = [
   { image: Icon, label: "Users", count: "2,453" },
@@ -22,77 +23,15 @@ const cards = [
   { image: IconFour, label: "Users with Savings", count: "102,453" },
 ];
 
-const users = [
-  {
-    organization: "Lendsqr",
-    name: "Adedeji Odumade",
-    email: "adedeji@email.com",
-    phone: "08012345678",
-    dateJoined: "May 01, 2023 10:00AM",
-    status: "Active",
-  },
-  {
-    organization: "Irorun",
-    name: "Jane Doe",
-    email: "jane@email.com",
-    phone: "08098765432",
-    dateJoined: "Jun 10, 2023 10:00AM",
-    status: "Inactive",
-  },
-  {
-    organization: "Lendsqr",
-    name: "Samuel Obi",
-    email: "samuel@email.com",
-    phone: "08123456789",
-    dateJoined: "Mar 05, 2023 10:00AM",
-    status: "Pending",
-  },
-  {
-    organization: "Lendsqr",
-    name: "Linda Johnson",
-    email: "linda@email.com",
-    phone: "09011223344",
-    dateJoined: "Jan 21, 2023 10:00AM",
-    status: "Blacklisted",
-  },
-  {
-    organization: "Paystack",
-    name: "John Smith",
-    email: "johnsmith@email.com",
-    phone: "08187654321",
-    dateJoined: "Jul 15, 2023 9: 30AM",
-    status: "Active",
-  },
-  {
-    organization: "Flutterwave",
-    name: "Chidinma Eze",
-    email: "chidinma@email.com",
-    phone: "07033445566",
-    dateJoined: "Feb 08, 2023 11:00AM",
-    status: "Inactive",
-  },
-  {
-    organization: "Irorun",
-    name: "Michael Ajayi",
-    email: "michael@email.com",
-    phone: "08122334455",
-    dateJoined: "Apr 12, 2023 2:15PM",
-    status: "Pending",
-  },
-  {
-    organization: "Lendsqr",
-    name: "Grace Umeh",
-    email: "grace@email.com",
-    phone: "08099887766",
-    dateJoined: "Dec 19, 2022 4:45PM",
-    status: "Blacklisted",
-  },
-];
-
 const UsersPage = () => {
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
   const [isFilterVisible, setIsFilterVisible] = useState(false);
   const toggleFilterForm = () => setIsFilterVisible((prev) => !prev);
+  const { isLoading, data, error } = useGetUserData();
+
+  if (isLoading)
+    return <div className="p-6 text-center text-2xl">Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <main className="p-4 md:p-6">
@@ -130,121 +69,125 @@ const UsersPage = () => {
           </div>
         )}
         <div className="bg-white rounded-lg shadow px-4 md:px-6 overflow-auto">
-          <table className="min-w-[600px] w-full text-sm text-left">
-            <thead className="bg-white text-[#545F7D] text-sm md:text-base font-semibold uppercase">
-              <tr>
-                {[
-                  "Organization",
-                  "Username",
-                  "Email",
-                  "Phone Number",
-                  "Date Joined",
-                  "Status",
-                ].map((heading, i) => (
-                  <th key={i} className="p-3 md:p-4">
-                    <span className="flex items-center gap-2">
-                      {heading}
-                      <button onClick={toggleFilterForm} title="icon">
-                        <Image
-                          src={IconFive}
-                          alt="Filter"
-                          width={16}
-                          height={16}
-                        />
-                      </button>
-                    </span>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user, idx) => (
-                <tr
-                  key={idx}
-                  className="border-b border-[#213F7D1A] hover:bg-gray-50"
-                >
-                  <td className="p-2 text-[#545F7D] text-sm md:text-base font-normal">
-                    {user.organization}
-                  </td>
-
-                  <td className="p-2 text-[#545F7D] text-sm md:text-base font-normal">
-                    {user.name}
-                  </td>
-                  <td className="p-2 text-[#545F7D] text-sm md:text-base font-normal">
-                    {user.email}
-                  </td>
-                  <td className="p-2 text-[#545F7D] text-sm md:text-base font-normal">
-                    {user.phone}
-                  </td>
-                  <td className="p-4 text-[#545F7D] text-sm md:text-base font-normal">
-                    {user.dateJoined}
-                  </td>
-
-                  <td className="p-2 relative">
-                    <div className="flex items-center justify-between gap-2">
-                      <span
-                        className={`px-3 py-2 text-xs md:text-base font-normal rounded-full ${
-                          user.status === "Active"
-                            ? "bg-green-200 text-[#39CD62]"
-                            : user.status === "Inactive"
-                            ? "bg-gray-200 text-[#545F7D]"
-                            : user.status === "Blacklisted"
-                            ? "bg-red-200 text-[#E4033B]"
-                            : "bg-yellow-200 text-[#E9B200]"
-                        }`}
-                      >
-                        {user.status}
+          {data.length === 0 ? (
+            <p className="text-center text-lg font-semibold text-gray-600 p-6">
+              No users found
+            </p>
+          ) : (
+            <table className="min-w-[600px] w-full text-sm text-left">
+              <thead className="bg-white text-[#545F7D] text-sm md:text-base font-semibold uppercase">
+                <tr>
+                  {[
+                    "Organization",
+                    "Username",
+                    "Email",
+                    "Phone Number",
+                    "Date Joined",
+                    "Status",
+                  ].map((heading, i) => (
+                    <th key={i} className="p-3 md:p-4">
+                      <span className="flex items-center gap-2">
+                        {heading}
+                        <button onClick={toggleFilterForm} title="icon">
+                          <Image
+                            src={IconFive}
+                            alt="Filter"
+                            width={16}
+                            height={16}
+                          />
+                        </button>
                       </span>
-                      <button
-                        title="icon"
-                        className="text-gray-500 hover:text-gray-800"
-                        onClick={() =>
-                          setOpenMenuIndex(openMenuIndex === idx ? null : idx)
-                        }
-                      >
-                        <Image src={icon} alt="More" width={20} height={20} />
-                        {openMenuIndex === idx && (
-                          <div className="absolute right-0 w-40 bg-white shadow-xl rounded z-10">
-                            <ul className="text-sm text-[#545F7D] p-3">
-                              <Link href="/dashboard/users-details">
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((user, idx) => (
+                  <tr
+                    key={user.id}
+                    className="border-b border-[#213F7D1A] hover:bg-gray-50"
+                  >
+                    <td className="p-2 text-[#545F7D] text-sm md:text-base font-normal">
+                      {user.organization}
+                    </td>
+                    <td className="p-2 text-[#545F7D] text-sm md:text-base font-normal">
+                      {user.username}
+                    </td>
+                    <td className="p-2 text-[#545F7D] text-sm md:text-base font-normal">
+                      {user.email}
+                    </td>
+                    <td className="p-2 text-[#545F7D] text-sm md:text-base font-normal">
+                      {user.phoneNumber}
+                    </td>
+                    <td className="p-4 text-[#545F7D] text-sm md:text-base font-normal">
+                      {user.createdAt}
+                    </td>
+                    <td className="p-2 relative">
+                      <div className="flex items-center justify-between gap-2">
+                        <span
+                          className={`px-3 py-2 text-xs md:text-base font-normal rounded-full ${
+                            user.status === "Active"
+                              ? "bg-green-200 text-[#39CD62]"
+                              : user.status === "Inactive"
+                              ? "bg-gray-200 text-[#545F7D]"
+                              : user.status === "Blacklisted"
+                              ? "bg-red-200 text-[#E4033B]"
+                              : "bg-yellow-200 text-[#E9B200]"
+                          }`}
+                        >
+                          {user.status}
+                        </span>
+                        <button
+                          title="icon"
+                          className="text-gray-500 hover:text-gray-800"
+                          onClick={() =>
+                            setOpenMenuIndex(openMenuIndex === idx ? null : idx)
+                          }
+                        >
+                          <Image src={icon} alt="More" width={20} height={20} />
+                          {openMenuIndex === idx && (
+                            <div className="absolute right-0 w-40 bg-white shadow-xl rounded z-10">
+                              <ul className="text-sm text-[#545F7D] p-3">
+                                <Link href="/dashboard/users-details">
+                                  <li className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                    <Image
+                                      src={View}
+                                      alt="View"
+                                      width={12}
+                                      height={12}
+                                    />
+                                    View Details
+                                  </li>
+                                </Link>
                                 <li className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
                                   <Image
-                                    src={View}
-                                    alt="View"
+                                    src={Blacklist}
+                                    alt="Blacklist"
                                     width={12}
                                     height={12}
                                   />
-                                  View Details
+                                  Blacklist User
                                 </li>
-                              </Link>
-                              <li className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
-                                <Image
-                                  src={Blacklist}
-                                  alt="Blacklist"
-                                  width={12}
-                                  height={12}
-                                />
-                                Blacklist User
-                              </li>
-                              <li className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
-                                <Image
-                                  src={Active}
-                                  alt="Activate"
-                                  width={12}
-                                  height={12}
-                                />
-                                Activate User
-                              </li>
-                            </ul>
-                          </div>
-                        )}
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                                <li className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                  <Image
+                                    src={Active}
+                                    alt="Activate"
+                                    width={12}
+                                    height={12}
+                                  />
+                                  Activate User
+                                </li>
+                              </ul>
+                            </div>
+                          )}
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
 
@@ -269,18 +212,21 @@ const UsersPage = () => {
           >
             <FaChevronLeft color="#213F7D" />
           </button>
+
           <Link
             href="/dashboard/user"
             className="text-sm md:text-base text-[#545F7D] px-2 py-1 rounded hover:bg-gray-200"
           >
             1
           </Link>
+
           <Link
             href="/dashboard/user-one"
             className="text-sm md:text-base text-[#545F7D] px-2 py-1 rounded hover:bg-gray-200"
           >
             2
           </Link>
+
           <Link
             href="/dashboard/user-two"
             className="text-sm md:text-base text-[#545F7D] px-2 py-1 rounded hover:bg-gray-200"
@@ -289,12 +235,14 @@ const UsersPage = () => {
           </Link>
 
           <span className="px-2 text-sm md:text-base text-[#545F7D]">...</span>
+
           <Link
             href="/dashboard/user-three"
             className="text-sm md:text-base text-[#545F7D] px-2 py-1 rounded hover:bg-gray-200"
           >
             12
           </Link>
+
           <button
             className="px-2 py-1 rounded bg-[#213F7D1A] hover:bg-gray-200"
             title="icon"
