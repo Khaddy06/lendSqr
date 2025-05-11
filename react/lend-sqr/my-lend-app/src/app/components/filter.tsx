@@ -52,23 +52,23 @@ const UserFilterForm = () => {
   };
 
   return (
+    // UserFilterForm.tsx
     <form
       onSubmit={handleSubmit}
-      className="bg-white  p-3 rounded-md w-full max-w-md"
+      className="bg-white p-3 rounded-md w-full max-w-md overflow-y-auto max-h-[300px]" // added max height and scroll
     >
       <div className="mb-2">
         <label className="block text-base font-medium text-[#545F7D]">
           Organization
         </label>
-        <select
-          name="organization"
+        <input
+          type="text"
+          name="username"
           value={formState.organization}
           onChange={handleChange}
+          placeholder="organization"
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-          title="select"
-        >
-          <option value="">Select</option>
-        </select>
+        />
       </div>
 
       <div className="mb-2">

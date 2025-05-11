@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { geistSans, geistMono } from "./fonts";
 import "./globals.css";
 import { UserFilterProvider } from "../app/context/user-filter-context";
+import { ReactQueryProvider } from "../app/context/react-query-provider";
+import { ToastContainer } from "react-toastify";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -12,14 +14,17 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <UserFilterProvider>
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          {children}
-        </body>
-      </html>
-    </UserFilterProvider>
+    <ReactQueryProvider>
+      <UserFilterProvider>
+        <html lang="en">
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+            {children}
+            <ToastContainer position="top-right" autoClose={3000} />
+          </body>
+        </html>
+      </UserFilterProvider>
+    </ReactQueryProvider>
   );
 }
